@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Die 3 Meta-Tags oben *müssen* zuerst im head stehen; jeglicher sonstiger head-Inhalt muss *nach* diesen Tags kommen -->
+		<title>Seminaranmeldung</title>
+
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Unterstützung für Media Queries und HTML5-Elemente in IE8 über HTML5 shim und Respond.js -->
+		<!-- ACHTUNG: Respond.js funktioniert nicht, wenn du die Seite über file:// aufrufst -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+  
+	<div class="container">
+		<h1>Seminaranmeldung</h1>
+		<form id="formular">
+			<div class="form-group row" id="fGSeminar">
+				<label for="seminar" class="col-sm-3 col-form-label">Seminar *</label>
+				<div class="col-sm-9">
+					<select class="form-control" id="seminar">
+						<option>Medizinische Software (Kompaktsemiar)</option>
+						<option>Seminar / Workschop zur klinischen Bewertung</option>
+						<option>MDR-Seminar</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group row" id="fGDatum" >
+				<label class="col-sm-3 col-form-label" for="datum">Seminar Datum *</label> 
+				<div class="col-sm-3">
+					<input type="date" class="form-control" id="datum" value="09 / 02 / 2018">
+				</div>
+			</div>
+			<div class="form-group row" id="fGVorname">
+				<label class="col-sm-3 col-form-label" for="vorname">Vorname *</label> 
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="vorname">
+				</div>
+			</div>
+			<div class="form-group row" id="fGNachanme">
+				<label class="col-sm-3 col-form-label" for="nachname">Nachname *</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="nachname">
+				</div>
+			</div>
+			<div class="form-group row" id="fGStraße">
+				<label class="col-sm-3 col-form-label" for="straße">Straße, Nr. *</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="straße">
+				</div>
+			</div>
+			<div class="form-group row" id="fGOrt">
+				<label class="col-sm-3 col-form-label" for="plz">PLZ, Ort *</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" id="plz">
+				</div>
+				<div class="col-sm-7">
+					<input type="text" class="form-control" id="ort">
+				</div>
+			</div>
+			<div class="form-group row" id="fGEmail">
+				<label class="col-sm-3 col-form-label" for="email">Email *</label>
+				<div class="col-sm-9">
+					<input type="email" class="form-control" id="email">
+				</div>
+			</div>
+			<div class="form-group row" id="fGTelefon">
+				<label class="col-sm-3 col-form-label" for="telefon">Tel.: *</label>
+				<div class="col-sm-9">
+					<input type="text" class="form-control" id="telefon">
+				</div>
+			</div>
+			<button type="absenden" class="btn btn-default">Absenden</button>
+		</form>
+	</div>
+	
+    <!-- jQuery (wird für Bootstrap JavaScript-Plugins benötigt) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Binde alle kompilierten Plugins zusammen ein (wie hier unten) oder such dir einzelne Dateien nach Bedarf aus -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<script>
+	
+		$('#formular').submit(function() {
+			var formControl = true;
+			
+			var fGSeminar = $('#fGSeminar');
+			var fGDatum = $('#fGDatum');
+			var fGVorname = $('#fGVorname');
+			var fGNachanme = $('#fGNachanme');
+			var fGStraße = $('#fGStraße');
+			var fGOrt = $('#fGOrt');
+			var fGEmail = $('#fGEmail');
+			var fGTelefon = $('#fGTelefon');
+			
+			fGSeminar.removeClass('has-error');
+			fGDatum.removeClass('has-error');
+			fGVorname.removeClass('has-error');
+			fGNachanme.removeClass('has-error');
+			fGStraße.removeClass('has-error');
+			fGOrt.removeClass('has-error');
+			fGEmail.removeClass('has-error');
+			fGTelefon.removeClass('has-error');
+			
+			var seminar = $('#seminar').val();
+			var datum = $('#datum').val();
+			var vorname = $('#vorname').val();
+			var nachname = $('#nachname').val();
+			var straße = $('#straße').val();
+			var plz = $('#plz').val();
+			var ort = $('#ort').val();
+			var email = $('#email').val();
+			var telefon = $('#telefon').val();
+			
+			if(datum == ''){
+				formControl = false;
+				fGDatum.addClass('has-error');
+			}
+			
+			if(vorname == ''){
+				formControl = false;
+				fGVorname.addClass('has-error');
+			}
+			
+			if(nachname == ''){
+				formControl = false;
+				fGNachanme.addClass('has-error');
+			}
+			
+			if(straße == ''){
+				formControl = false;
+				fGStraße.addClass('has-error');
+			}
+			
+			if(plz == ''){
+				formControl = false;
+				fGOrt.addClass('has-error');
+			}
+			
+			if(ort == ''){
+				formControl = false;
+				fGOrt.addClass('has-error');
+			}
+			
+			if(email == ''){
+				formControl = false;
+				fGEmail.addClass('has-error');
+			}
+			
+			if(telefon == ''){
+				formControl = false;
+				fGTelefon.addClass('has-error');
+			}
+			
+			if(formControl){
+				alert('Formular wurde abgeschickt.');
+				<!--Hier würde der
+			}
+			return false;
+		});
+	</script>
+  </body>
+</html>
